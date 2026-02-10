@@ -151,6 +151,10 @@ def stop_intake():
     fly.stop()
 
 
+# ----------------------------------------------------
+# AUTO ############################################### 
+# ----------------------------------------------------
+
 def run_autonomous_stupid():
     brain.screen.clear_screen()
     brain.screen.print("Auto Started")
@@ -169,6 +173,19 @@ def run_autonomous_stupid():
     
     brain.screen.set_cursor(6, 1)
     brain.screen.print("Auto Complete!")
+    
+    # ================================================
+    # HOW TO ADD MORE STEPS:
+    # ================================================
+    # brain.screen.print("Step 3: Intake")
+    # if not intake_in(1.5, speed=80):  # Try step 3
+    #     return  # Stop if fails
+    #
+    # brain.screen.set_cursor(5, 1)
+    # brain.screen.print("Step 4: Shoot")
+    # if not fire_flywheel(2.0):  # Try step 4
+    #     return  # Stop if fails
+    # ================================================
 
 # ----------------------------------------------------
 # USER CONTROL 
