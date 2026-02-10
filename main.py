@@ -26,7 +26,7 @@ wait(20, MSEC)
 # COMPLETION WAITING UTILITIES
 # ----------------------------------------------------
 
-def wait_for_drive_complete(timeout_sec=3.0):
+def wait_for_drive_complete(timeout_sec=5.0):
     timer = 0
     while timer < timeout_sec:
         if controller.buttonRight.pressing():  # Emergency stop
@@ -61,7 +61,7 @@ def wait_for_intake_complete(timeout_sec=2.0):
 # DRIVE PRIMITIVES (Non-blocking start + wait wrapper)
 # ----------------------------------------------------
 
-def drive_distance(turns, velocity_percent=70, timeout_sec=3.0):
+def drive_distance(turns, velocity_percent=70, timeout_sec=5.0):
     # Set velocity first
     left_drive.set_velocity(velocity_percent, PERCENT)
     right_drive.set_velocity(velocity_percent, PERCENT)
@@ -73,7 +73,7 @@ def drive_distance(turns, velocity_percent=70, timeout_sec=3.0):
     # Wait for completion
     return wait_for_drive_complete(timeout_sec)
 
-def turn_in_place(turns, velocity_percent=50, timeout_sec=2.0):
+def turn_in_place(turns, velocity_percent=50, timeout_sec=5.0):
     left_drive.set_velocity(velocity_percent, PERCENT)
     right_drive.set_velocity(velocity_percent, PERCENT)
     
