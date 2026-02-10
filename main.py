@@ -29,19 +29,19 @@ wait(20, MSEC)
 def wait_for_drive_complete(timeout_sec=5.0):
     timer = 0
     while timer < timeout_sec:
-        if controller.buttonRight.pressing():  # Emergency stop
+        if controller.buttonRight.pressing():
             stop_drive()
             return False
         
-        # Check if ALL motors are done (is_done = True means not spinning)
-        if left_motor_1.is_done() and left_motor_2.is_done() and \
-           right_motor_1.is_done() and right_motor_2.is_done():
+        # Check if motors are still spinning
+        # NOT DONE means still moving (spinning)
+        if not (left_motor_1.is_spinning() or left_motor_2.is_spinning() or 
+                right_motor_1.is_spinning() or right_motor_2.is_spinning()):
             return True
         
         wait(20, MSEC)
         timer += 0.02
     
-    # Timeout reached - stop motors to prevent indefinite spinning
     stop_drive()
     return False
 
